@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class PlayBoard {
     private char[][] board;
     private Ship aircraftCarrier = new Ship(5);
@@ -8,7 +9,7 @@ public class PlayBoard {
         board = new char[n][n];
         for(int i=0; i< n;i++){
             for(int j=0; j<n ; j++){
-                board[n][j] = '#';
+                board[i][j] = '#';
             }
         }
 
@@ -25,8 +26,16 @@ public class PlayBoard {
         submarine.place(this,(int)(10*Math.random()),(int)(10*Math.random()));
         tugBoat.place(this,(int)(10*Math.random()),(int)(10*Math.random()));
     }
-    public static void main(String[] args){
 
+    @Override
+    public String toString() {
+        String thing = "";
+        for(int i=0; i<board.length;i++){
+            for(int j =0; j<board[0].length;j++){
+                thing+= board[i][j];
+            }
+            thing+= "\n";
+        }
+        return thing;
     }
-
 }

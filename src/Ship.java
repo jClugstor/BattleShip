@@ -3,6 +3,10 @@ public class Ship {
     private int[][] positions;
     private String orientation;
     public Ship(int length){
+        double orientation = Math.random();
+        if(orientation > .50){
+            this.orientation = "vertical";
+        }
         this.length = length;
     }
     public void place(PlayBoard board,int x,int y){
