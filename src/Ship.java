@@ -1,31 +1,44 @@
+import java.util.List;
 public class Ship {
     private int length;
-    private int[][] positions;
+    private List<Coordinate> coordinates;
     private String orientation;
-    public Ship(int length){
+    public Ship(int length,PlayBoard board){
         double orientation = Math.random();
         if(orientation > .50){
             this.orientation = "vertical";
         }
+        else{
+            this.orientation = "horizontal";
+        }
         this.length = length;
+        place(board);
     }
-    public void place(PlayBoard board,int x,int y){
+    public void place(PlayBoard board){
+        int x = (int)Math.random()*board.getBoard()[0].length , y = (int)Math.random()*board.getBoard().length;
         if(this.orientation.equals("vertical")){
-            if(y+length > board.getBoard().length){
+            while(y+length > board.getBoard().length){
+                y = (int)Math.random()*board.getBoard().length;
+            }
+            if(y+length < board.getBoard().length){
                 for(int i =0; i < length;i++){
-                    positions[i][0]=x;
-                    positions[i][1]=i+y;
+                    coordinates.set(i,new Coordinate(x,i+y));
                 }
             }
         }
         if(this.orientation.equals("horizontal")){
-            if(x+length > board.getBoard()[0].length){
+            while(x+length > board.getBoard()[0].length){
+                x= (int)Math.random()*board.getBoard()[0].length;
+            }
+            if(x+length < board.getBoard()[0].length){
                 for(int i =0; i < length; i++){
-                    positions[i][0]=x+i;
-                    positions[i][1]=y;
+                    coordinates.set(i,new Coordinate(x+i,y));
                 }
             }
         }
     }
 
+    public List<Coordinate> getCoordinates() {
+        return coordinates;
+    }
 }

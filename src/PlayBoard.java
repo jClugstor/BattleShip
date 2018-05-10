@@ -1,17 +1,18 @@
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
 public class PlayBoard {
     private char[][] board;
-    private Ship aircraftCarrier = new Ship(5);
-    private Ship battleShip = new Ship(4);
-    private Ship submarine = new Ship(3);
-    private Ship tugBoat = new Ship(2);
-    public PlayBoard(int n){
-        board = new char[n][n];
-        for(int i=0; i< n;i++){
-            for(int j=0; j<n ; j++){
+    private List<Ship> shipList;
+    int amntShips;
+    public PlayBoard(int boardLength, int amntShips){
+        board = new char[10][boardLength];
+        for(int i=0; i< 10;i++){
+            for(int j=0; j<boardLength ; j++){
                 board[i][j] = '#';
             }
         }
+        shipList = new ArrayList<>(amntShips);
 
     }
 
@@ -21,10 +22,16 @@ public class PlayBoard {
         return board;
     }
     public void initializeBoard(){
-        aircraftCarrier.place(this,(int)(10*Math.random()),(int)(10*Math.random()));
-        battleShip.place(this,(int)(10*Math.random()),(int)(10*Math.random()));
-        submarine.place(this,(int)(10*Math.random()),(int)(10*Math.random()));
-        tugBoat.place(this,(int)(10*Math.random()),(int)(10*Math.random()));
+
+    }
+    public boolean checkIfHit(int x,int y){
+        for(Ship ship : shipList){
+            for(Coordinate coordinate : ship.getCoordinates()){
+                if((coordinate.getX() == x) && coordinate.getY() ==y){
+                    return true;
+                }
+            }
+        }
     }
 
     @Override
