@@ -1,5 +1,6 @@
 public class Coordinate {
-    int x ,y;
+    private int x ,y;
+    private boolean isHit;
     public Coordinate(int x, int y){
         this.x = x;
         this.y = y;
@@ -19,5 +20,12 @@ public class Coordinate {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public void setHit(boolean hit) {
+        isHit = hit;
+    }
+    public boolean getHit(){
+        return isHit;
     }
 }

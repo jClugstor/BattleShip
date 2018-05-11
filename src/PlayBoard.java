@@ -8,33 +8,39 @@ public class PlayBoard {
     public PlayBoard(int boardLength, int amntShips){
         board = new char[10][boardLength];
         for(int i=0; i< 10;i++){
-            for(int j=0; j<boardLength ; j++){
+            for(int j=0 ; j<boardLength ; j++){
                 board[i][j] = '#';
             }
         }
-        shipList = new ArrayList<>(amntShips);
+
 
     }
-
-
-
     public char[][] getBoard() {
         return board;
     }
-    public void initializeBoard(){
 
-    }
     public boolean checkIfHit(int x,int y){
         for(Ship ship : shipList){
             for(Coordinate coordinate : ship.getCoordinates()){
-                if((coordinate.getX() == x) && coordinate.getY() ==y){
+                if((coordinate.getX() == x) && (coordinate.getY() == y)){
                     return true;
                 }
             }
         }
         return false;
     }
+    public void initialize(){
+        boolean collision = false;
+        for(int i =0; i < shipList.size(); i++){
+            while(collision) {
+                shipList.set(i, new Ship((int) (4 * Math.random()), this));
+                collision = collision(i,shipList.get(i));
+            }
+        }
+    }
+    private boolean collision(int n, Ship ship){
 
+    }
     @Override
     public String toString() {
         String thing = "";

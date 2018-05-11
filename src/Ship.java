@@ -15,10 +15,10 @@ public class Ship {
         place(board);
     }
     public void place(PlayBoard board){
-        int x = (int)Math.random()*board.getBoard()[0].length , y = (int)Math.random()*board.getBoard().length;
+        int x = (int)(Math.random()*board.getBoard()[0].length) , y = (int)(Math.random()*board.getBoard().length);
         if(this.orientation.equals("vertical")){
             while(y+length > board.getBoard().length){
-                y = (int)Math.random()*board.getBoard().length;
+                y = (int)(Math.random()*board.getBoard().length);
             }
             if(y+length < board.getBoard().length){
                 for(int i =0; i < length;i++){
@@ -28,7 +28,7 @@ public class Ship {
         }
         if(this.orientation.equals("horizontal")){
             while(x+length > board.getBoard()[0].length){
-                x= (int)Math.random()*board.getBoard()[0].length;
+                x= (int)(Math.random()*board.getBoard()[0].length);
             }
             if(x+length < board.getBoard()[0].length){
                 for(int i =0; i < length; i++){
