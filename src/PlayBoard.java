@@ -12,6 +12,7 @@ public class PlayBoard {
                 board[i][j] = '#';
             }
         }
+        shipList = new ArrayList<>(amntShips);
 
 
     }
@@ -39,6 +40,37 @@ public class PlayBoard {
         }
     }
     private boolean collision(int n, Ship ship){
+        for(int i =0; i< n; i++){
+           for(int j = 0; j < shipList.get(i).getCoordinates().size(); j++){
+               int otherX = shipList.get(i).getCoordinates().get(j).getX(),otherY = shipList.get(i).getCoordinates().get(i).getY();
+               int shipX = ship.getCoordinates().get(i).getX(), shipY = ship.getCoordinates().get(i).getY();
+               if((otherX == shipX) && (otherY == shipY)){
+                   return true;
+               }
+           }
+        }
+        return false;
+    }
+    public void hitOrMiss(int x, int y){
+        if(checkIfHit(x,y)){
+            board[y][x] = 'O';
+            shipWithCoordinate(x,y)
+        }
+        else{
+            board[y][x] = 'X';
+        }
+    }
+    public Ship shipWithCoordinate(int x, int y){
+        for(int i = 0; i < shipList.size(); i++){
+            for(int j = 0; j<shipList.get(i).getCoordinates().size(); j++){
+                if(checkIfHit(shipList.get(i).getCoordinates().get(j).getX(),shipList.get(i).getCoordinates().get(j).getY())){
+                    return shipList.get(i);
+                }
+            }
+        }
+        return null;
+    }
+    public boolean checkIfWin(){
 
     }
     @Override
