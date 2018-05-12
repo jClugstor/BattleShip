@@ -9,6 +9,8 @@ public class Main {
         int shipAmount = input.nextInt();
         PlayBoard board = new PlayBoard(length,shipAmount);
         System.out.println("Board initialized.");
+        while(!board.checkIfWin()){
 
+        }
     }
 }

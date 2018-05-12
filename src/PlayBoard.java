@@ -54,7 +54,7 @@ public class PlayBoard {
     public void hitOrMiss(int x, int y){
         if(checkIfHit(x,y)){
             board[y][x] = 'O';
-            shipWithCoordinate(x,y)
+            shipWithCoordinate(x,y).getCoordinate(x,y).setHit(true);
         }
         else{
             board[y][x] = 'X';
@@ -71,7 +71,14 @@ public class PlayBoard {
         return null;
     }
     public boolean checkIfWin(){
-
+        for(Ship ship:shipList){
+            for(Coordinate coord : ship.getCoordinates()){
+                if (!coord.getHit()){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
     @Override
     public String toString() {

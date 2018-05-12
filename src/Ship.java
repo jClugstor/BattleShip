@@ -37,7 +37,14 @@ public class Ship {
             }
         }
     }
-
+    public Coordinate getCoordinate(int x, int y){
+        for(Coordinate coord : coordinates){
+            if(coord.getX() == x && coord.getY() ==y){
+                return coord;
+            }
+        }
+        return null;
+    }
     public List<Coordinate> getCoordinates() {
         return coordinates;
     }
