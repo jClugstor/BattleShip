@@ -48,4 +48,11 @@ public class Ship {
     public List<Coordinate> getCoordinates() {
         return coordinates;
     }
+    public String toString(){
+        String string = "";
+        for(Coordinate coord : coordinates){
+            string += coord.toString();
+        }
+        return string;
+    }
 }

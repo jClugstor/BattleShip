@@ -28,4 +28,7 @@ public class Coordinate {
     public boolean getHit(){
         return isHit;
     }
+    public String toString(){
+        return x + " " + y;
+    }
 }

@@ -9,8 +9,21 @@ public class Main {
         int shipAmount = input.nextInt();
         PlayBoard board = new PlayBoard(length,shipAmount);
         System.out.println("Board initialized.");
-        while(!board.checkIfWin()){
-
+        while(true){
+            System.out.println(board);
+            System.out.println("Enter X Coordinate");
+            int Xcoord = input.nextInt();
+            System.out.println("Enter Y Coordinate");
+            int Ycoord = input.nextInt();
+            if(board.checkIfHit(Xcoord,Ycoord)){
+                System.out.println("Hit!");
+                board.setHitOrMiss(Xcoord,Ycoord);
+            }
+            else{
+                System.out.println("Miss!");
+                board.setHitOrMiss(Xcoord,Ycoord);
+            }
+            System.out.println(board.getShipList());
         }
     }
 }
