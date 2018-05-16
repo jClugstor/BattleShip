@@ -36,10 +36,10 @@ public class PlayBoard {
     public void initialize(){
         boolean collision = false;
         for(int i =0; i < amntShips; i++){
-            shipList.add(new Ship((int) (4 * Math.random()),this));
+            shipList.add(new Ship((int) (6 * Math.random())+1,this));
             collision = collision(i,shipList.get(i));
             while (collision){
-                shipList.set(i, new Ship((int) (4 * Math.random()), this));
+                shipList.set(i, new Ship((int) (6 * Math.random()), this));
                 collision = collision(i,shipList.get(i));
             }
         }
