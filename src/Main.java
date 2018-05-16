@@ -8,7 +8,9 @@ public class Main {
         System.out.println("How many ships?");
         int shipAmount = input.nextInt();
         PlayBoard board = new PlayBoard(length,shipAmount);
+        board.initialize();
         System.out.println("Board initialized.");
+        System.out.println(board.getShipList());
         while(true){
             System.out.println(board);
             System.out.println("Enter X Coordinate");

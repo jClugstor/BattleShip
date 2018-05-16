@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 public class Ship {
     private int length;
@@ -12,7 +13,9 @@ public class Ship {
             this.orientation = "horizontal";
         }
         this.length = length;
-        place(board);
+        coordinates = new ArrayList<>(length);
+        this.place(board);
+        System.out.println(this.orientation);
     }
     public void place(PlayBoard board){
         int x = (int)(Math.random()*board.getBoard()[0].length) , y = (int)(Math.random()*board.getBoard().length);
@@ -22,17 +25,17 @@ public class Ship {
             }
             if(y+length < board.getBoard().length){
                 for(int i =0; i < length;i++){
-                    coordinates.set(i,new Coordinate(x,i+y));
+                    coordinates.add(new Coordinate(x,i+y));
                 }
             }
         }
         if(this.orientation.equals("horizontal")){
             while(x+length > board.getBoard()[0].length){
-                x= (int)(Math.random()*board.getBoard()[0].length);
+                x = (int)(Math.random()*board.getBoard()[0].length);
             }
             if(x+length < board.getBoard()[0].length){
                 for(int i =0; i < length; i++){
-                    coordinates.set(i,new Coordinate(x+i,y));
+                    coordinates.add(new Coordinate(x+i,y));
                 }
             }
         }

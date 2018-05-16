@@ -11,7 +11,11 @@ public class PlayBoard {
                 board[i][j] = '~';
             }
         }
+        this.amntShips = amntShips;
         shipList = new ArrayList<>(amntShips);
+        this.initialize();
+        System.out.println(shipList.size());
+
 
 
     }
@@ -31,8 +35,10 @@ public class PlayBoard {
     }
     public void initialize(){
         boolean collision = false;
-        for(int i =0; i < shipList.size(); i++){
-            while(collision) {
+        for(int i =0; i < amntShips; i++){
+            shipList.add(new Ship((int) (4 * Math.random()),this));
+            collision = collision(i,shipList.get(i));
+            while (collision){
                 shipList.set(i, new Ship((int) (4 * Math.random()), this));
                 collision = collision(i,shipList.get(i));
             }

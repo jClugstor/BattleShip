@@ -29,6 +29,6 @@ public class Coordinate {
         return isHit;
     }
     public String toString(){
-        return x + " " + y;
+        return "(" + x + " " + y + ")";
     }
 }
