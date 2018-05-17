@@ -3,10 +3,10 @@ import java.util.List;
 public class PlayBoard {
     private char[][] board;
     private List<Ship> shipList;
-    int amntShips;
-    public PlayBoard(int boardLength, int amntShips){
-        board = new char[10][boardLength];
-        for(int i=0; i< 10;i++){
+    private int amntShips;
+    public PlayBoard(int boardLength,int boardHeight, int amntShips){
+        board = new char[boardHeight][boardLength];
+        for(int i=0; i< boardHeight;i++){
             for(int j=0 ; j<boardLength ; j++){
                 board[i][j] = '~';
             }
@@ -33,23 +33,21 @@ public class PlayBoard {
         }
         return false;
     }
-    public void initialize(){
-        boolean collision = false;
+    private void initialize(){
+        boolean collision;
         for(int i =0; i < amntShips; i++){
-            shipList.add(new Ship((int) (6 * Math.random())+1,this));
+            shipList.add(new Ship(((int) (6 * Math.random()))+1,this));
             collision = collision(i,shipList.get(i));
             while (collision){
-                shipList.set(i, new Ship((int) (6 * Math.random()), this));
+                shipList.set(i, new Ship(((int) (6 * Math.random()))+1, this));
                 collision = collision(i,shipList.get(i));
             }
         }
     }
     private boolean collision(int n, Ship ship){
-        for(int i =0; i< n; i++){
-           for(int j = 0; j < shipList.get(i).getCoordinates().size(); j++){
-               int otherX = shipList.get(i).getCoordinates().get(j).getX(),otherY = shipList.get(i).getCoordinates().get(i).getY();
-               int shipX = ship.getCoordinates().get(i).getX(), shipY = ship.getCoordinates().get(i).getY();
-               if((otherX == shipX) && (otherY == shipY)){
+        for(int i =0; i < n-1; i++){
+           for(int j =0; j<ship.getCoordinates().size();j++){
+               if(shipList.get(i).getCoordinates().contains(ship.getCoordinates().get(j))){
                    return true;
                }
            }
@@ -97,7 +95,7 @@ public class PlayBoard {
             for(int j =0; j<board[0].length;j++){
                 thing+= board[i][j] + " ";
             }
-            thing+= "\n";
+            thing += "\n";
         }
         return thing;
     }

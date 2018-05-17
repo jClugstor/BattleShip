@@ -5,10 +5,11 @@ public class Main {
         System.out.println("Welcome to BattleShip");
         System.out.println("How long should the board be?");
         int length = input.nextInt();
+        System.out.println("How high should the board be?");
+        int height = input.nextInt();
         System.out.println("How many ships?");
         int shipAmount = input.nextInt();
-        PlayBoard board = new PlayBoard(length,shipAmount);
-        board.initialize();
+        PlayBoard board = new PlayBoard(length,height,shipAmount);
         System.out.println("Board initialized.");
         System.out.println(board.getShipList());
         while(true){
