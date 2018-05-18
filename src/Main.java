@@ -15,9 +15,9 @@ public class Main {
         while(true){
             System.out.println(board);
             System.out.println("Enter X Coordinate");
-            int Xcoord = input.nextInt();
+            int Xcoord = input.nextInt() - 1;
             System.out.println("Enter Y Coordinate");
-            int Ycoord = input.nextInt();
+            int Ycoord = input.nextInt() - 1;
             if(board.checkIfHit(Xcoord,Ycoord)){
                 System.out.println("Hit!");
                 board.setHitOrMiss(Xcoord,Ycoord);

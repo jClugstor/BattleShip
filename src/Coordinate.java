@@ -31,4 +31,13 @@ public class Coordinate {
     public String toString(){
         return "(" + x + " " + y + ")";
     }
+    public boolean equals(Coordinate coord){
+        if((this.x == coord.getX()) && (this.y == coord.getY())){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
 }

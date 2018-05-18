@@ -36,19 +36,19 @@ public class PlayBoard {
     private void initialize(){
         boolean collision;
         for(int i =0; i < amntShips; i++){
-            shipList.add(new Ship(((int) (6 * Math.random()))+1,this));
+            shipList.add(new Ship(((int) (5 * Math.random()))+2,this));
             collision = collision(i,shipList.get(i));
             while (collision){
-                shipList.set(i, new Ship(((int) (6 * Math.random()))+1, this));
+                shipList.set(i, new Ship(((int) (5 * Math.random()))+2, this));
                 collision = collision(i,shipList.get(i));
             }
         }
     }
     private boolean collision(int n, Ship ship){
-        for(int i =0; i < n-1; i++){
-           for(int j =0; j<ship.getCoordinates().size();j++){
-               if(shipList.get(i).getCoordinates().contains(ship.getCoordinates().get(j))){
-                   return true;
+        for(int i = 0; i < n-1; i++){
+           for(int j = 0; j<shipList.get(i).getCoordinates().size();j++){
+                if(ship.getCoordinates().contains(shipList.get(i).getCoordinates().get(j))){
+                    return true;
                }
            }
         }
