@@ -51,6 +51,15 @@ public class Ship {
     public List<Coordinate> getCoordinates() {
         return coordinates;
     }
+    public boolean isSunk(){
+        for(Coordinate coord : coordinates){
+            if(!coord.getHit()){
+                return false;
+            }
+        }
+        return true;
+
+    }
     public String toString(){
         String string = "";
         for(Coordinate coord : coordinates){

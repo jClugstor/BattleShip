@@ -4,6 +4,7 @@ public class Coordinate {
     public Coordinate(int x, int y){
         this.x = x;
         this.y = y;
+        isHit = false;
     }
 
     public int getX() {
@@ -29,15 +30,10 @@ public class Coordinate {
         return isHit;
     }
     public String toString(){
-        return "(" + x + " " + y + ")";
+        return "(" + (x+1) + "," + (y+1) + ")";
     }
     public boolean equals(Coordinate coord){
-        if((this.x == coord.getX()) && (this.y == coord.getY())){
-            return true;
-        }
-        else {
-            return false;
-        }
+      return  (this.x == coord.getX()) && (this.y == coord.getY());
     }
 
 }

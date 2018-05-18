@@ -12,12 +12,12 @@ public class Main {
         PlayBoard board = new PlayBoard(length,height,shipAmount);
         System.out.println("Board initialized.");
         System.out.println(board.getShipList());
-        while(true){
+        while(!board.checkIfWin()){
             System.out.println(board);
             System.out.println("Enter X Coordinate");
-            int Xcoord = input.nextInt() - 1;
+            int Xcoord = input.nextInt();
             System.out.println("Enter Y Coordinate");
-            int Ycoord = input.nextInt() - 1;
+            int Ycoord = input.nextInt();
             if(board.checkIfHit(Xcoord,Ycoord)){
                 System.out.println("Hit!");
                 board.setHitOrMiss(Xcoord,Ycoord);
